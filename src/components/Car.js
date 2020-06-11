@@ -4,15 +4,11 @@ import cars from '../cars.json'
 // Container, Paper, Chip //
 
 
-
+//need to fix index problem
 const Car = (props) => {
-    const id = props.match.params.id;
-    let car;
-    for (let i=0; i<cars.length; i++) {
-        if (cars[i].id === parseInt(id)) {
-            car = cars[i]
-        }
-    }
+    console.log(cars);
+    const id = parseInt(props.match.params.id);
+    let car = cars.find(car => car.id === (id+1));
     return (
         <h1>{car.Name}</h1>
     )
