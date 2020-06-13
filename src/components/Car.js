@@ -1,16 +1,24 @@
 import React from 'react'
 import cars from '../cars.json'
-// import material ui components here //
-// Container, Paper, Chip //
+import { Container, Paper, Chip } from '@material-ui/core'
 
 
-//need to fix index problem
 const Car = (props) => {
     console.log(cars);
     const id = parseInt(props.match.params.id);
-    let car = cars.find(car => car.id === (id+1));
+    let car = cars.find(car => car.id === (id + 1));
+
     return (
-        <h1>{car.Name}</h1>
+        <Container style={{ width: "600px", paddingTop: "30px" }}>
+            <Paper style={{ padding: "10px 40px 40px 40px" }}>
+                <h1 style={{textTransform: "capitalize"}}>{car.Name}</h1>
+                <div>
+                    {Object.entries(car).map((property, i) => (
+                        <Chip style={{margin:"5px 6px 5px 0px"}} key={i} label={`${property[0]}: ${property[1]}`} />
+                    ))}
+                </div>
+            </Paper>
+        </Container>
     )
 }
 
